@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 export const Header = () => {
     return(
-        <h1>NonNon</h1>
+        <h1><Link to={"/"}>NonNon</Link></h1>
     )
 }
 
