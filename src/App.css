@@ -16,6 +16,11 @@ h1 {
   
 }
 
+.comment {
+  border: solid;
+  margin: 10px;
+}
+
 .home-container{
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
