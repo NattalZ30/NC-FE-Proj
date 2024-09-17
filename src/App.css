@@ -15,14 +15,22 @@ h1 {
   }
   
 }
-.article-card {
-  border: solid;
-  margin: 10px;
+
+.home-container{
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
-  
 }
 
+.article-card {
+  border: solid;
+  margin: 10px;  
+}
+.article-page-card {
+  border: solid;
+  text-align: center;
+  margin: 10px;
+  
+}
 .article-image {
     width: 100px;
     height: 100px%;
