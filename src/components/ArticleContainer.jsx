@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getArticleById } from "../../api";
 import { useParams } from "react-router-dom";
 import ArticleSection from "./ArticleSection";
+import Comments from "./Comments";
 
 export const ArticleContainer = () => {
     const [articles, setArticles] = useState([])
@@ -19,6 +20,7 @@ export const ArticleContainer = () => {
             {articles.map((article, index) => {
                 return <ArticleSection key={index} article={article} />
             })}
+            <Comments />
         </div>
     )
 }
