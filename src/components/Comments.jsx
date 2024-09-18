@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import { getComments } from "../../api";
-import { useParams } from "react-router-dom";
 
-export const Comments = () => {
+export const Comments = ({article_id}) => {
     const [comments, setComments] = useState([])
-
-    const {article_id} = useParams()
-
+    
     useEffect(() => {
         getComments(article_id).then((data) => {
             setComments(data)
@@ -15,7 +12,7 @@ export const Comments = () => {
 
     return (
         <section className="comment-section">
-            {comments.map((comment, index) => {
+            {comments.map((comment) => {
                 return (
                 <div className="comment" key={comment.comment_id}>
                     <p>{comment.body}</p>
@@ -28,3 +25,4 @@ export const Comments = () => {
 }
 
 export default Comments;
+    
