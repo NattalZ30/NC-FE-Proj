@@ -1,6 +1,5 @@
 import Nav from './components/Nav'
 import { Route, Routes, useSearchParams } from 'react-router-dom'
-import { useEffect } from 'react';
 import HomeContainer from "./components/HomeContainer"
 import ArticleContainer from './components/ArticleContainer';
 
