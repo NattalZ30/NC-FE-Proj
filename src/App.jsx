@@ -9,9 +9,6 @@ import './App.css'
 function App() {
   
   const [searchParams, setSearchParams] = useSearchParams()
-  useEffect(() => {
-    console.log(searchParams)
-  },[searchParams])
 
   return (
     <div className='app'>

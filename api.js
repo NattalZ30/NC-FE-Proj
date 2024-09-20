@@ -28,3 +28,7 @@ export const postComment = (article_id, body) => {
     return ncNews.post(`/articles/${article_id}/comments`, {body, username: "jessjelly"
      }).then(({data}) => data.comment)
 }
+
+export const deleteComment = (comment_id) => {
+    return ncNews.delete(`/comments/${comment_id}`).then(({data}) => data.comment)
+}

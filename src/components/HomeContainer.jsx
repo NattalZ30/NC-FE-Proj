@@ -5,7 +5,6 @@ import ArticleCard from "./ArticleCard";
 export const HomeContainer = ({searchParams}) => {
     const [articles, setArticles] = useState([])
     const topicQuery = searchParams.get("topic")
-    console.log(topicQuery)
     const params = {params:{topic: topicQuery}}
 
 
