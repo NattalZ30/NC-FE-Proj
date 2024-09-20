@@ -8,8 +8,8 @@ export const getTopics = () => {
     return ncNews.get("/topics").then(({data}) => data.topics)
 }
 
-export const getArticles = () => {
-    return ncNews.get("/articles").then(({data}) => data.articles)
+export const getArticles = (query) => {
+    return ncNews.get("/articles", query).then(({data}) => data.articles)
 }
 
 export const getArticleById = (article_id) => {
@@ -22,4 +22,9 @@ export const getComments = (article_id) => {
 
 export const updateVotes = (article_id, increment) => {
     return ncNews.patch(`/articles/${article_id}`, {inc_votes: increment }).then(({data}) => data.update)
+}
+
+export const postComment = (article_id, body) => {
+    return ncNews.post(`/articles/${article_id}/comments`, {body, username: "jessjelly"
+     }).then(({data}) => data.comment)
 }

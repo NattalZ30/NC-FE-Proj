@@ -7,9 +7,7 @@ import Comments from "./Comments";
 
 export const ArticleContainer = () => {
     const [articles, setArticles] = useState([])
-
     const {article_id} = useParams()
-
     useEffect(() => {
         getArticleById(article_id).then((data) => {
             setArticles(data)
