@@ -1,19 +1,15 @@
 import { useEffect, useState } from "react";
-import { getComments, postComment } from "../../api";
+import { getComments } from "../../api";
 
 export const Comments = ({article_id}) => {
-    const [comments, setComments] = useState([])
     const [commentInput, setCommentInput] = useState("")
+    const [newComment, setNewComment] = useState("")
     
     useEffect(() => {
-        // if(newComment != ""){
-        //     postComment(article_id, newComment).then((data) => setComments(data, ...comments))
-        //     setNewComment("");        
-        // }
         getComments(article_id).then((data) => {
             setComments(data)
         })
-    },[article_id, comments])
+    },[article_id, newComment])
 
     const handleChange = (e) => {
         setCommentInput(e.target.value);
@@ -21,25 +17,22 @@ export const Comments = ({article_id}) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newComment = commentInput;
-        setComments([newComment, ...comments]) 
+        setNewComment(commentInput);
         setCommentInput("");
-        postComment(article_id, newComment).then((data) => setComments(data, ...comments))
-        console.log(comments)
       };
 
     return (
         <section className="comment-section">
-            <form className="new-comment" onSubmit={handleSubmit}>
-                <label htmlFor="comment-input">
+            <form className="poke-search" onSubmit={handleSubmit}>
+                <label htmlFor="poke-input">
                     Add Comment:
                     <input
-                    name="comment-input"
+                    name="poke-input"
                     onChange={handleChange}
-                    value={commentInput}
+                    value={searchInput}
                     ></input>
                 </label>
-                <button>Add</button>
+                <button>Search</button>
             </form>
             {comments.map((comment) => {
                 return (

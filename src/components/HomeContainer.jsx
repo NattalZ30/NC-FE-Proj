@@ -2,15 +2,18 @@ import { useEffect, useState } from "react";
 import { getArticles } from "../../api";
 import ArticleCard from "./ArticleCard";
 
-export const HomeContainer = () => {
+export const HomeContainer = ({searchParams}) => {
     const [articles, setArticles] = useState([])
+    const topicQuery = searchParams.get("topic")
+    console.log(topicQuery)
+    const params = {params:{topic: topicQuery}}
+
 
     useEffect(() => {
-        getArticles().then((data) => {
-            console.log(data)
+        getArticles(params).then((data) => {
             setArticles(data)
         })
-    },[])
+    },[topicQuery])
 
     return (
         <div className="home-container">
