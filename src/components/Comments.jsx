@@ -1,31 +1,33 @@
 import { useEffect, useState } from "react";
-import { getComments, postComment } from "../../api";
+import { getComments, postComment, deleteComment } from "../../api";
 
 export const Comments = ({article_id}) => {
     const [comments, setComments] = useState([])
     const [commentInput, setCommentInput] = useState("")
     
     useEffect(() => {
-        // if(newComment != ""){
-        //     postComment(article_id, newComment).then((data) => setComments(data, ...comments))
-        //     setNewComment("");        
-        // }
         getComments(article_id).then((data) => {
             setComments(data)
         })
-    },[article_id, comments])
+    },[comments])
 
     const handleChange = (e) => {
         setCommentInput(e.target.value);
       };
     
+    const handleDelete = (comment_id) => {
+        deleteComment(comment_id).then(()=>{
+            const updatedComments = comments.filter((comment) => comment.comment_id !== comment_id);
+            setComments(updatedComments);
+        })
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const newComment = commentInput;
         setComments([newComment, ...comments]) 
         setCommentInput("");
         postComment(article_id, newComment).then((data) => setComments(data, ...comments))
-        console.log(comments)
       };
 
     return (
@@ -46,6 +48,7 @@ export const Comments = ({article_id}) => {
                 <div className="comment" key={comment.comment_id}>
                     <p>{comment.body}</p>
                     <p>{comment.author}</p>
+                    <button onClick={()=>{handleDelete(comment.comment_id)}}>X</button>
                 </div>
                 )}
             )}
